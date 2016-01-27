@@ -1,0 +1,65 @@
+<body>
+  <div data-mode="selectable" data-model="modelMapping" class="d-dropdown">
+    <div data-placeholder="Applications" style="width: 200px;" class="d-dropdown__trigger d-button d-button_action d-button_large d-icon-left-filter d-icon-right-angle_down">Applications</div>
+    <div class="d-dropdown__menu" ng-controller="AppCtrl">
+      <span class="d-dropdown__menu-caption">Search</span>
+      <div class="d-textfield d-textfield_label_hidden">
+        <label class="d-textfield__label d-icon-left-search">
+          <span class="d-textfield__item">Search by Name</span>
+          <input placeholder="Search by Name" class="d-textfield__input" type="text" ng-model="filter">
+        </label>
+      </div>
+        <ul class="d-accordion d-accordion_inner">
+          <li class="d-accordion__item" ng-repeat="app in apps">
+            <div tabindex="0" class="d-accordion__item-header">{{app.name}}</div>
+            <div class="d-accordion__item-content">
+              <ul class="d-dropdown__menu-options">
+                <li class="d-dropdown__menu-options-item">
+                  <a class="d-dropdown__menu-options-item-option" data-value="{{env_list(app)}}">Environments: {{env_list(app)}}</a>
+                </li>
+                <li class="d-dropdown__menu-options-item">
+                  <a class="d-dropdown__menu-options-item-option" data-value="{{comp_list(app)}}">Components: {{comp_list(app)}}</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+    </div>
+  </div>
+ <p>{{modelMapping}}</p>
+
+ <br>
+
+  <div ng-controller="ReleaseCtrl">
+    <div>Releases</div>
+    <div style="display:inline-block;">
+      <div data-mode="selectable" data-model="modelMapping06" class="d-dropdown" style="width:200px">
+        <div data-show-value data-placeholder="Select a release" class="d-dropdown__trigger d-select">Select a release</div>
+        <div class="d-dropdown__menu">
+          <ul class="d-dropdown__menu-options">
+            <li class="d-dropdown__menu-options-item" ng-repeat="release in releases">
+              <a class="d-dropdown__menu-options-item-option" data-value="{{release.name}}" ng-click="select_release(release.name)">{{release.name}}</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <p>{{modelMapping06}}</p>
+
+    <style>
+      div.scroll
+      {
+        width:90%;
+        height:60px;
+        overflow-x:auto;
+        overflow-y: hidden;
+      }
+    </style>
+
+   <div class="scroll">
+    <ul class="d-steps">
+      <li class="d-steps__cell" ng-repeat="stage in selected_release_stages"><a class="d-steps__link">{{stage}}</a></li>
+    </ul>
+   </div>
+ </div>
+</body>

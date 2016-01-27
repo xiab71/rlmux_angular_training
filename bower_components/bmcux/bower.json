@@ -1,0 +1,15 @@
+{
+  "name": "bmcux",
+  "homepage": "http://bmcux.com/",
+  "description": "The BMC Design Pattern Library",
+  "moduleType": "globals",
+  "main": [
+    "./dpl-components.css",
+    "./dpl-components.js"
+  ],
+  "ignore": [],
+  "dependencies": {
+    "angular": ">= 1.4.7"
+  },
+  "version": "2.3"
+}
